@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/menteeshomepage.css}" crossorigin="anonymous">
+
+</head>
+<body>
+<br>
+<div sec:authorize="isAuthenticated()">
+    <br>
+    <hr>
+    <h1 style="text-align: center">Welcome to Mentees Management System</h1>
+    <hr>
+    <br>
+    <a th:href="@{/logout}" class="btn btn-danger" style="float: right">Logout</a>
+    <br>
+    <a th:href="@{/mentees/list}">
+        <button class="menteesbtn">Click here to Go to Mentees section</button>
+    </a>
+</div>
+
+</body>
+</html>

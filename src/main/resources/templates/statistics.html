@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>List of Students</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/menteeshomepage.css}" crossorigin="anonymous">
+</head>
+<body>
+<div class="page-bg">
+</div>
+<div class="container my-2">
+    <hr>
+    <h1 style="text-align: center">Stats of all the available Mentees</h1>
+    <hr>
+    <br>
+
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead class="thead-dark">
+        <tr>
+            <th>Total Students</th>
+            <th>Average Number of Notes Per Student</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${numberofmentees}"></td>
+            <td th:text="${averagenotes}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <a th:href="@{/mentees/list}" class="btn btn-primary btn-sm mb-3"> Back to Mentees List</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Student Notes Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/menteeshomepage.css}" crossorigin="anonymous">
+
+</head>
+
+<body>
+<div class="page-bg">
+</div>
+<br>
+<hr>
+<h1 style="text-align: center">Search a Mentee</h1>
+<hr>
+<div class="container">
+    <form action="#" th:action="@{/mentees/searchresult}" method="GET">
+        <label>Enter Mentee Roll number:</label><br>
+        <input class="form-control" type="text" id="rollnumber" name="rollnumber"/>
+        <br>
+        <h6 th:text="${message}"></h6>
+        <button type="submit" class="btn btn-info col-2"> Search Student</button>
+    </form>
+    <hr>
+    <br>
+    <a th:href="@{/mentees/list}" class="btn btn-primary btn-sm mb-3">  Back to Mentees List</a>
+</div>
+</body>
+
+</html>

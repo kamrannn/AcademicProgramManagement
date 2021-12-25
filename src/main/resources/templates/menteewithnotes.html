@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/menteeshomepage.css}" crossorigin="anonymous">
+</head>
+<body>
+<div class="page-bg">
+</div>
+<br>
+<hr>
+<h1 style="text-align: center">Details of a Single Mentee</h1>
+<hr>
+<br>
+<div class="container">
+    <table border="1" class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Roll Number</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Sur Name</th>
+            <th scope="col">Email</th>
+            <th sec:authorize="hasRole('ROLE_MENTOR')" scope="col" >Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${mentee.rollNumber}"></td>
+            <td th:text="${mentee.firstName}"></td>
+            <td th:text="${mentee.surName}"></td>
+            <td th:text="${mentee.email}"></td>
+            <td sec:authorize="hasRole('ROLE_MENTOR')">
+                <a th:href="@{/mentees/update/{id}(id=${mentee.id})}" class="btn btn-warning">Update</a>
+                <a th:href="@{/mentees/delete/{id}(id=${mentee.id})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <table border="1" class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Text</th>
+            <th scope="col">Date of Creation</th>
+            <th sec:authorize="hasRole('ROLE_MENTOR')" scope="col" >Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="menteenote: ${menteeNotes}">
+            <td th:text="${menteenote.id}"></td>
+            <td th:text="${menteenote.text}"></td>
+            <td th:text="${menteenote.dateOfCreation}"></td>
+            <td sec:authorize="hasRole('ROLE_MENTOR')">
+                <a th:href="@{/notes/update/{id}/{menteeid}(id=${menteenote.id},menteeid=${mentee.id})}" class="btn btn-warning">Update</a>
+                <a th:href="@{/notes/delete/{id}/{menteeid}(id=${menteenote.id},menteeid=${mentee.id})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/mentees/list}" class="btn btn-primary btn-sm mb-3"> Back to Mentees List</a>
+</div>
+</body>
+</html>

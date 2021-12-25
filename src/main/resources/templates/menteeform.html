@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mentees Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/menteeshomepage.css}" crossorigin="anonymous">
+</head>
+<body>
+<div class="page-bg">
+</div>
+<hr>
+<h1 style="text-align: center">Add a new Mentee</h1>
+<hr>
+<div class="container">
+    <form action="#" th:action="@{/mentees/create}" th:object="${mentee}" method="post">
+        <div class="container">
+            <p>Please fill in this form to add a new mentee.</p>
+            <hr>
+            <label for="rollNumber"><b>Roll Number</b></label>
+            <input type="text" th:field="*{rollNumber}" placeholder="Roll Number" class="form-control" id="rollNumber"
+                   required/>
+            <p th:if="${#fields.hasErrors('rollNumber')}" th:errors="*{rollNumber}">Roll number Error</p>
+
+            <label for="firstname"><b>First Name</b></label>
+            <input type="text" th:field="*{firstName}" placeholder="First Name" class="form-control" id="firstname"
+                   required/>
+            <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName Error</p>
+
+            <label for="surName"><b>Sur Name</b></label>
+            <input type="text" th:field="*{surName}" placeholder="Sur Name" class="form-control" name="surName"
+                   id="surName"
+                   required/>
+            <p th:if="${#fields.hasErrors('surName')}" th:errors="*{surName}">Surname Error</p>
+
+            <label for="email"><b>Email</b></label>
+            <input type="text" th:field="*{email}" placeholder="Email" class="form-control" name="email" id="email"
+                   required/>
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</p>
+            <button type="submit" class="menteesbtn">Add Mentee</button>
+        </div>
+    </form>
+    <br>
+    <a th:href="@{/mentees/list}" class="btn btn-primary btn-sm mb-3"> Back to Mentees List</a>
+</div>
+
+</body>
+</html>
